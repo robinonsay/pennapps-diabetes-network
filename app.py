@@ -7,7 +7,7 @@ db = client.primer
 def getUsername(auth):
     if auth == "8cMySVclQw1xvhhhUm0tEIbAeVek":
         return "patient6"
-    elif auth == "7amAbchQQeGWUKY4sc7AmsEMVBNA" and password == "":
+    elif auth == "7amAbchQQeGWUKY4sc7AmsEMVBNA":
         return "patient3"
     elif auth == "mGRZ93y7jIGU51BDbKIsNTpVLHEU":
         username = "mGRZ93y7jIGU51BDbKIsNTpVLHEU"
@@ -15,9 +15,9 @@ def getUsername(auth):
     return None
 
 def getAuth(username):
-    if username == "patient6" and password == "":
+    if username == "patient6":
          return "8cMySVclQw1xvhhhUm0tEIbAeVek"
-    elif username == "patient3" and password == "":
+    elif username == "patient3":
         return "7amAbchQQeGWUKY4sc7AmsEMVBNA"
     elif username == "patient5":
         return "mGRZ93y7jIGU51BDbKIsNTpVLHEU"
@@ -33,7 +33,7 @@ def login():
     """User calls this in index.html to login to app"""
 
     uID = getAuth(request.form['username'])
-    password = request.form['password']
+    # password = request.form['password']
 
     if uID is None:
         redirect('/')
