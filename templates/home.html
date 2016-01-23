@@ -47,6 +47,14 @@
 
     }
 </style>
+    
+<script type="text/javascript">
+    var i = 0*1;
+    function addCondition(){
+        $("#div-condition-formgroup").append('<input type="text" class="form-control" name="health-conditions-'+i+'">');
+        i++;
+    }
+</script>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -118,17 +126,48 @@
 <div class="container-fluid" id="div-main">
     <div class="row">
 	<div class="col-md-6">
-        <ul class="list-group">
+        <ul id="ul-friends" class="list-group">
 <!--Format for adding items to group
           <li class="list-group-item">First item</li>
           <li class="list-group-item list-group-item-danger">Fourth item</li>
 -->
-
+<!--            user has ability to go through and select different friends-->
+            {% for friend in friends %}
+            <li class="list-group-item">{{ friend.username }}</li>
+            {% endfor %}
         </ul>
-
+        <button type="button" class="btn btn-info">Form Group</button>
 	</div>
     <div class="col-md-6" id="div-messages">
+        <div class="well">
+            <form action="" method="POST" role="form">
+                <legend>Update Info</legend>
 
+                <div class="form-group">
+                    <label for="weight">Weight</label>
+                    <input type="number" class="form-control" id="input=weight" name="weight" placeholder="lbs">
+                </div>
+                {% if user.height == None%}
+                <div class="form-group">
+                    <label for="height">Height</label>
+                    <input type="number" class="form-control alert-danger" id="input-height" name="height" placeholder="ft">
+                </div>
+                {% endif %}
+                
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="input-age" name="age" >
+                </div>
+                <div class="form-group">
+                    <div id="div-condition-formgroup">
+                    <label for="health-conditions">Other Health Condtions</label>
+                    <input type="text" class="form-control" id="input-health-condtions" name="health-conditions">
+                    </div>
+                    <a class="btn btn-info" id="buttton-add-condition" onclick="addCondition()"><span class="glyphicon glyphicon-plus"></span></a>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
 	</div>
 </div>
 
