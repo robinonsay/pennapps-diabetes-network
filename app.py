@@ -5,7 +5,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/home')
+@app.route('/home/')
 def home():
     return render_template('home.html')
 
@@ -14,7 +14,7 @@ def login():
     username = request.form['username']
     password = request.form['password']
     print(username + " : "+password)
-    return redirect('/')
+    return redirect('/home/')
 
 if __name__ == '__main__':
     app.debug = True
