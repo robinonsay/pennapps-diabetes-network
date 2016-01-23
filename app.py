@@ -17,6 +17,10 @@ def login():
     print(username + " : "+password)
     return redirect(url_for("home", username = username, password = password))
 
+@app.route('/logout')
+def logout():
+    return redirect('/')
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='173.255.234.84')
