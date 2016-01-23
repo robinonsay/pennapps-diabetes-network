@@ -8,7 +8,7 @@ def index():
 def home(username, password=None):
     if username is None and password is None:
         return redirect('/')
-    return render_template('home.html', username = username, password)
+    return render_template('home.html', username = username, password = password)
 
 @app.route('/login', methods = ['POST'])
 def login():
