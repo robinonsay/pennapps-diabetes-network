@@ -47,7 +47,7 @@
 
     }
 </style>
-    
+
 <script type="text/javascript">
     var i = 0*1;
     function addCondition(){
@@ -88,7 +88,7 @@
 
 		<ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="/home" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
-			<li><a href="#" id="anchor-usersName">{{ username }}</a></li>
+			<li><a href="/profile/" id="anchor-usersName">{{ username }}</a></li>
       <li><a href="/" id="anchor-logout">LogOut</a></li>
 
 <!--TODO
@@ -141,30 +141,22 @@
 	</div>
     <div class="col-md-6" id="div-messages">
         <div class="well">
-            <form action="" method="POST" role="form">
+            <form action="/update" method="POST" role="form">
                 <legend>Update Info</legend>
 
                 <div class="form-group">
                     <label for="weight">Weight</label>
                     <input type="number" class="form-control" id="input=weight" name="weight" placeholder="lbs">
                 </div>
-                {% if user.height == None%}
+
                 <div class="form-group">
-                    <label for="height">Height</label>
-                    <input type="number" class="form-control alert-danger" id="input-height" name="height" placeholder="ft">
-                </div>
-                {% endif %}
-                
-                <div class="form-group">
-                    <label for="age">Age</label>
-                    <input type="number" class="form-control" id="input-age" name="age" >
+                    <label for="birthdate>Birthdate</label>
+                    <input type="date" class="form-control" id="input-birthdate" name="birthdate" >
                 </div>
                 <div class="form-group">
                     <div id="div-condition-formgroup">
                     <label for="health-conditions">Other Health Condtions</label>
                     <input type="text" class="form-control" id="input-health-condtions" name="health-conditions">
-                    </div>
-                    <a class="btn btn-info" id="buttton-add-condition" onclick="addCondition()"><span class="glyphicon glyphicon-plus"></span></a>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
