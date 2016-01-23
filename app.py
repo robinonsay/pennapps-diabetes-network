@@ -1,12 +1,15 @@
 from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
-
+username = None
+password = None
 @app.route('/')
 def index():
     return render_template('index.html')
 
 @app.route('/home/')
 def home():
+    if username is None && is None:
+        return render_template('index.html')
     return render_template('home.html')
 
 @app.route('/login', methods = ['POST'])
