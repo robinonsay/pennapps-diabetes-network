@@ -86,16 +86,16 @@ def logout():
     """Called to log user out by taking them to homepage"""
     return redirect('/')
 
-@app.route('/addFriend/')
-def addFriend():
+@app.route('/addFriend/<username>')
+def addFriend(username):
     """"""
     friend = request.args.get('friend',0,type=str)
     db.friends.insert_one(
     {
         "uID":getAuth(username),
-        "friend":getAuth
+        "friend":getAuth(friend)
     })
-    return redirect(url_for('/profile/', username= username)
+    return jsonify(friend = friend)
 
 if __name__ == '__main__':
     app.debug = True

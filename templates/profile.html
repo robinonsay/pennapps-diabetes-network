@@ -56,7 +56,16 @@
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-        
+        $('#span-ok').hide();
+        $('.friending').bind('click', function(){
+            $.getJSON(
+                $SCRIPT_ROOT + '/addFriend/'+$('#h1-username').val(),{
+                friend: $('span[id="span-friend"]').val(),
+                }, function(data) {
+                alert(data.friend);
+            });
+          return false;
+        });
     });
 </script>
 </head>
@@ -112,7 +121,7 @@
 
 <div class="jumbotron text-center">
 	<div class="container-fluid">
-        <h1>{{ username }}</h1>
+        <h1 id="h1-username">{{ username }}</h1>
 	</div>
 </div>
 
@@ -130,10 +139,9 @@
 
             <!--user has ability to go through and select different friends-->
             {% for user in users %}
-            <a href="#" class="list-group-item" id="anchor-{{user}}">{{ user }}<span id="check" class="glyphicon glyphicon-ok" hidden></span></a>
+            <a href="#" class="list-group-item friending" id="anchor-{{user}}"><span id="span-friend">{{ user }}</span><span id="span-ok" class="glyphicon glyphicon-ok"></span></a>
             {% endfor %}
         </ul>
-        <button type="submit" class="btn btn-primary">Add Friend</button>
 
 	</div>
     <div class="col-md-6 ">
