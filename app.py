@@ -40,7 +40,7 @@ def profile():
     return render_template('profile.html')
 
 @app.route('/update/<username>', methods = ['POST'])
-def update():
+def update(username):
     """Called to update data for a user"""
     updatedResults = db.users.update_one({"username":username},
     {
