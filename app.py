@@ -44,7 +44,7 @@ def login():
     #     "password":password,
     #     })
     #After authentication, user is taken to home.html
-    return redirect(url_for("home", uID = uID))
+    return redirect(url_for("home", uID=uID))
 
 @app.route('/home/<uID>')
 def home(uID):
@@ -57,7 +57,7 @@ def home(uID):
     tempList = []
     for i in range(0,len(friends)):
         tempList = getUsername(friends[i].uID)
-    return render_template('home.html', uID = uID, friends = tempList)
+    return render_template('home.html', uID=uID, friends=tempList)
 
 @app.route('/profile/<uID>')
 def profile(uID):
@@ -67,7 +67,7 @@ def profile(uID):
     for user in results:
         users.append(getUsername(user.uID))
 
-    return render_template('profile.html', username = getUsername(uID), users = users)
+    return render_template('profile.html', username=getUsername(uID), users=users)
 
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
@@ -80,7 +80,7 @@ def update(uID):
             "health-conditions":request.form['health-conditions']
         }
     })
-    return redirect(url_for("home", uID = uID))
+    return redirect(url_for("home", uID=uID))
 
 @app.route('/logout')
 def logout():
@@ -96,7 +96,7 @@ def addFriend(username):
         "uID":getAuth(username),
         "friend":getAuth(friend)
     })
-    return jsonify(friend = friend)
+    return jsonify(friend=friend)
 
 if __name__ == '__main__':
     app.debug = True
