@@ -1,5 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
+from pymongo import MongoClient
+
 app = Flask(__name__)
+client = MongoClient()
+db = client.primer
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -14,7 +19,13 @@ def home(username):
 def login():
     username = request.form['username']
     password = request.form['password']
-    print(username + " : "+password)
+
+    if db.users is None or db.users.find({"username":username, "password":password}) is None:
+        results = db.users.insert_one({
+        "username":username,
+        "password":password,
+        })
+
     return redirect(url_for("home", username = username))
 
 @app.route('/logout')
