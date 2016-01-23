@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Diabetes Network</title>
+    <tiuIDetes Network</title>
 
     <!-- Bootstrap CSS -->
 <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
@@ -88,7 +88,7 @@
 
 		<ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="/home" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
-			<li><a href="/profile/" id="anchor-usersName">{{ username }}</a></li>
+			<li><a href="/profile/{{ uID }}" id="anchor-usersName">{{ uID }}</a></li>
       <li><a href="/" id="anchor-logout">LogOut</a></li>
 
 <!--TODO
@@ -134,14 +134,14 @@
 
             <!--user has ability to go through and select different friends-->
             {% for friend in friends %}
-            <li class="list-group-item">{{ friend.username }}</li>
+            <li class="list-group-item">{{ friend.uID }}</li>
             {% endfor %}
         </ul>
         <button type="button" class="btn btn-info">Form Group</button>
 	</div>
     <div class="col-md-6" id="div-messages">
         <div class="well">
-            <form action="/update/{{ username }}" method="POST" role="form">
+            <form action="/update/{{ uID }}" method="POST" role="form">
                 <legend>Update Info</legend>
 
                 <div class="form-group">

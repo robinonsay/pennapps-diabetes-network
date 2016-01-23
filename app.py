@@ -4,6 +4,24 @@ from pymongo import MongoClient
 app = Flask(__name__)
 client = MongoClient()
 db = client.primer
+def getUsername(auth):
+    if auth == "8cMySVclQw1xvhhhUm0tEIbAeVek":
+        return "patient6"
+    elif auth == "7amAbchQQeGWUKY4sc7AmsEMVBNA" and password == "":
+        return "patient3"
+    elif auth == "mGRZ93y7jIGU51BDbKIsNTpVLHEU":
+        username = "mGRZ93y7jIGU51BDbKIsNTpVLHEU"
+        return "patient5"
+    return None
+
+def getAuth(username):
+    if username == "patient6" and password == "":
+         return "8cMySVclQw1xvhhhUm0tEIbAeVek"
+    elif username == "patient3" and password == "":
+        return "7amAbchQQeGWUKY4sc7AmsEMVBNA"
+    elif username == "patient5":
+        return "mGRZ93y7jIGU51BDbKIsNTpVLHEU"
+    return None
 
 @app.route('/')
 def index():
@@ -13,43 +31,39 @@ def index():
 @app.route('/login', methods = ['POST'])
 def login():
     """User calls this in index.html to login to app"""
-    username = request.form['username']
+    uID = getAuth(request.form['username'])
     password = request.form['password']
 
-    if username == "patient6" and password == "":
-        username = "8cMySVclQw1xvhhhUm0tEIbAeVek"
-    elif username == "patient3" and password == "":
-        username = "7amAbchQQeGWUKY4sc7AmsEMVBNA"
-    elif username == "patient5":
-        username = "mGRZ93y7jIGU51BDbKIsNTpVLHEU"
+    else:
+        redirect('/')
 #User is added to database if they aren't already in the database
-    if db.users is None or db.users.find({"username":username, "password":password}) is None:
+    if db.users is None or db.users.find({"uID":uID, "password":password}) is None:
         results = db.users.insert_one({
-        "username":username,
+        "uID":uID,
         "password":password,
         })
     #After authentication, user is taken to home.html
-    return redirect(url_for("home", username = username))
+    return redirect(url_for("home", uID = uID))
 
-@app.route('/home/<username>')
-def home(username):
+@app.route('/home/<uID>')
+def home(uID):
     """Users home page"""
-#if no username is given, take back to index.html
-    if username is None:
+#if no uID is given, take back to index.html
+    if uID is None:
         return redirect('/')
 #list of friends is passed to poopulate the bet thing
-    friends = db.friends.find({"username":username})
-    return render_template('home.html', username = username, friends = friends)
+    friends = db.friends.find({"uID":uID})
+    return render_template('home.html', uID = uID, friends = friends)
 
 @app.route('/profile/')
-def profile():
-    """Users profile, they can add frineds here"""
+def profile(uID):
+    """Users profile, they can add friends here"""
     return render_template('profile.html')
 
-@app.route('/update/<username>', methods = ['POST'])
-def update(username):
+@app.route('/update/<uID>', methods = ['POST'])
+def update(uID):
     """Called to update data for a user"""
-    updatedResults = db.users.update_one({"username":username},
+    updatedResults = db.users.update_one({"uID":uID},
     {
         "$set":{
             "weight":request.form['weight'],
@@ -57,12 +71,16 @@ def update(username):
             "health-conditions":request.form['health-conditions']
         }
     })
-    return redirect(url_for("home", username = username))
+    return redirect(url_for("home", uID = uID))
 
 @app.route('/logout')
 def logout():
     """Called to log user out by taking them to homepage"""
     return redirect('/')
+
+def friend():
+    """"""
+    return redirect('/profile/')
 
 if __name__ == '__main__':
     app.debug = True
