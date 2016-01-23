@@ -67,7 +67,7 @@ def profile(uID):
     for user in results:
         users.append(getUsername(user.uID))
 
-    return render_template('profile.html', username=getUsername(uID), users=users, uID=uId)
+    return render_template('profile.html', username=getUsername(uID), users=users, uID=uID)
 
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
