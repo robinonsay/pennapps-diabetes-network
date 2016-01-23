@@ -8,7 +8,8 @@ def index():
 
 @app.route('/home/')
 def home():
-    if username is None and username is None:
+    if username is None and password is None:
+        print(username + " : "+password + "is none")
         return redirect('/')
     return render_template('home.html')
 
