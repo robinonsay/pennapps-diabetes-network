@@ -55,8 +55,8 @@ def home(uID):
 #list of friends is passed to poopulate the bet thing
     friends = db.friends.find({"uID":uID})
     tempList = []
-    for i in range(0,len(friends)):
-        tempList = getUsername(friends[i].uID)
+    for friend in friends:
+        tempList = getUsername(friend.uID)
     return render_template('home.html', uID=uID, friends=tempList)
 
 @app.route('/profile/<uID>')
