@@ -9,7 +9,7 @@ def index():
 @app.route('/home/')
 def home():
     if username is None and username is None:
-        return render_template('index.html')
+        return redirect('/')
     return render_template('home.html')
 
 @app.route('/login', methods = ['POST'])
