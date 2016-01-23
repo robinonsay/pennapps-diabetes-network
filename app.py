@@ -38,11 +38,11 @@ def login():
     if uID is None:
         redirect('/')
 #User is added to database if they aren't already in the database
-    if db.users is None or db.users.find({"uID":uID, "password":password}) is None:
-        results = db.users.insert_one({
-        "uID":uID,
-        "password":password,
-        })
+    # if db.users is None or db.users.find({"uID":uID, "password":password}) is None:
+    #     results = db.users.insert_one({
+    #     "uID":uID,
+    #     "password":password,
+    #     })
     #After authentication, user is taken to home.html
     return redirect(url_for("home", uID = uID))
 
