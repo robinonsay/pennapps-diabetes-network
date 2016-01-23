@@ -32,7 +32,9 @@
         border: none;
         color: #727272;
     }
-    
+    main{
+        color: #212121;
+    }
     style-4 input[type="text"] {
       padding: 10px;
       border: none;
@@ -98,15 +100,30 @@
 
 <div class="container-fluid" id="div-alerts" hidden>
     <div class="row">
-	<div class="col-md-6 col-md-offset-6">
+	<div class="col-md-6 col-md-offset-3">
+<!--Format for alerts
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+        </button>
+            <strong>Warning</strong>This is an alert
+        </div>
+-->
+
 	</div>
 </div>
 
 </div>
-    
+<main>
 <div class="container-fluid" id="div-main">
     <div class="row">
 	<div class="col-md-6">
+        <ul class="list-group">
+<!--Format for adding items to group
+          <li class="list-group-item">First item</li>
+          <li class="list-group-item list-group-item-danger">Fourth item</li>
+-->
+
+        </ul>
 		
 	</div>
     <div class="col-md-6" id="div-messages">
@@ -115,6 +132,9 @@
 </div>
 
 </div>
+    
+</main>    
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
