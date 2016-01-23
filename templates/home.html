@@ -87,7 +87,7 @@
 
 
 		<ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="/home" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
+      <li class="active"><a href="#" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
 			<li><a href="/profile/{{ uID }}" id="anchor-usersName">{{ uID }}</a></li>
       <li><a href="/" id="anchor-logout">LogOut</a></li>
 
@@ -134,7 +134,7 @@
 
             <!--user has ability to go through and select different friends-->
             {% for friend in friends %}
-            <li class="list-group-item">{{ friend.uID }}</li>
+            <li class="list-group-item">{{ friend }}</li>
             {% endfor %}
         </ul>
         <button type="button" class="btn btn-info">Form Group</button>

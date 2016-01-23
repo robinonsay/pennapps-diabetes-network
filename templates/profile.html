@@ -51,24 +51,15 @@
 
     }
 </style>
-
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#check').hide();
+        
     });
-var isFriendSelected = false;
-function selectFriend(){
-    if(!isFriendSelected){
-        $('#check').show();
-        isFriendSelected = true;
-    }else{
-         $('#check').hide();
-        isFriendSelected = false;
-    }
-
-}
 </script>
-</head>uID
+</head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
@@ -125,34 +116,12 @@ function selectFriend(){
 	</div>
 </div>
 
-<div class="container-fluid" id="div-alerts" hidden>
-    <div class="row">
-	<div class="col-md-6 col-md-offset-3">
-<!--Format for alerts
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
-        </button>
-            <strong>Warning</strong>This is an alert
-        </div>
--->
 
-	</div>
-</div>
-
-</div>
 <main>
 <div class="container-fluid text-center" id="div-main">
     <div class="row">
 	<div class="col-md-4" id="div-add-friends">
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" id="input-search-username" placeholder="username">
 
-            </div>
-
-
-            <button type="button" class="btn btn-primary">Search</button>
-        </form>
         <ul id="ul-users" class="list-group">
 <!--Format for adding items to group
           <li class="list-group-item">First item</li>
@@ -161,11 +130,22 @@ function selectFriend(){
 
             <!--user has ability to go through and select different friends-->
             {% for user in users %}
-            <a href="#" class="list-group-item" id="anchor-user" onclick="selectFriend()">{{ user.username }}<span id="check" class="glyphicon glyphicon-ok"></span></a>
+            <a href="#" class="list-group-item" id="anchor-{{user}}">{{ user }}<span id="check" class="glyphicon glyphicon-ok" hidden></span></a>
             {% endfor %}
         </ul>
-        <button type="button" class="btn btn-primary">Add Friend</button>
+        <button type="submit" class="btn btn-primary">Add Friend</button>
+
 	</div>
+    <div class="col-md-6 ">
+    <!--Format for alerts
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+        </button>
+            <strong>Warning</strong>This is an alert
+        </div>
+    -->
+
+    </div>
     <div class="col-md-12">
 
 	</div>

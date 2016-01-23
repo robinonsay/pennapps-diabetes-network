@@ -53,12 +53,20 @@ def home(uID):
         return redirect('/')
 #list of friends is passed to poopulate the bet thing
     friends = db.friends.find({"uID":uID})
-    return render_template('home.html', uID = uID, friends = friends)
+    tempList = []
+    for i in range(0,len(friends)):
+        tempList = getUsername(friends[i].uID)
+    return render_template('home.html', uID = uID, friends = tempList)
 
-@app.route('/profile/')
+@app.route('/profile/<uID>')
 def profile(uID):
     """Users profile, they can add friends here"""
-    return render_template('profile.html')
+    results = db.users.find()
+    users = []
+    for user in results:
+        users.append(getUsername(user.uID))
+
+    return render_template('profile.html', username = getUsername(uID), users = users)
 
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
@@ -78,9 +86,16 @@ def logout():
     """Called to log user out by taking them to homepage"""
     return redirect('/')
 
-def friend():
+@app.route('/addFriend/')
+def addFriend():
     """"""
-    return redirect('/profile/')
+    friend = request.args.get('friend',0,type=str)
+    db.friends.insert_one(
+    {
+        "uID":getAuth(username),
+        "friend":getAuth
+    })
+    return redirect(url_for('/profile/', username= username)
 
 if __name__ == '__main__':
     app.debug = True
