@@ -37,7 +37,7 @@ def home(username):
 @app.route('/profile/')
 def profile():
     """Users profile, they can add frineds here"""
-    reutrn render_template('profile.html')
+    return render_template('profile.html')
 
 @app.route('/update/<username>', methods = ['POST'])
 def update():
