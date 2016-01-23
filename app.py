@@ -1,24 +1,21 @@
 from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
-username = None
-password = None
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/home/')
-def home():
+@app.route('/home/<username>')
+def home(username, password):
     if username is None and password is None:
-        print(username + " : "+password + "is none")
         return redirect('/')
-    return render_template('home.html')
+    return render_template('home.html', username = username)
 
 @app.route('/login', methods = ['POST'])
 def login():
     username = request.form['username']
     password = request.form['password']
     print(username + " : "+password)
-    return redirect('/home/')
+    return redirect(url_for("home", username = username, password = password))
 
 if __name__ == '__main__':
     app.debug = True
