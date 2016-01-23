@@ -89,7 +89,7 @@
 		<ul class="nav navbar-nav navbar-right">
       <li class="active"><a href="/home" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
 			<li><a href="#" id="anchor-usersName">{{ username }}</a></li>
-      <li><a href="#" id="anchor-logout">LogOut</a></li>
+      <li><a href="/" id="anchor-logout">LogOut</a></li>
 
 <!--TODO
 			<li class="dropdown">
@@ -131,7 +131,8 @@
           <li class="list-group-item">First item</li>
           <li class="list-group-item list-group-item-danger">Fourth item</li>
 -->
-<!--            user has ability to go through and select different friends-->
+
+            <!--user has ability to go through and select different friends-->
             {% for friend in friends %}
             <li class="list-group-item">{{ friend.username }}</li>
             {% endfor %}

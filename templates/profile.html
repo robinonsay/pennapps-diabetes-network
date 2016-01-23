@@ -51,6 +51,23 @@
 
     }
 </style>
+    
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#check').hide();                
+    });
+var isFriendSelected = false;
+function selectFriend(){
+    if(!isFriendSelected){
+        $('#check').show();
+        isFriendSelected = true;
+    }else{
+         $('#check').hide();
+        isFriendSelected = false;
+    }
+       
+}    
+</script>
 </head>
 <body>
 <nav class="navbar navbar-inverse" role="navigation">
@@ -83,8 +100,9 @@
 
 
 		<ul class="nav navbar-nav navbar-right">
-            <li><a href="#" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
-			<li  class="active"><a href="#" id="anchor-usersName"><img id="img-profile-picture" class="img-circle" src="http://robinonsay.co/RobinOnsay.jpg" alt="Profile Picture" style="height: 2em;"> UsersName</a></li>
+      <li><a href="/home" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
+			<li  class="active"><a href="#" id="anchor-usersName">{{ username }}</a></li>
+      <li><a href="/" id="anchor-logout">LogOut</a></li>
 
 <!--TODO
 			<li class="dropdown">
@@ -103,10 +121,7 @@
 
 <div class="jumbotron text-center">
 	<div class="container-fluid">
-		<h1><img id="img-profile-picture" class="img-circle" src="http://robinonsay.co/RobinOnsay.jpg" alt="Profile Picture" style="height: 2em;"></h1>
-        <p id="paragraph-username">
-            Placeholder
-        </p>
+        <h1>{{ username }}</h1>
 	</div>
 </div>
 
@@ -128,15 +143,28 @@
 <main>
 <div class="container-fluid text-center" id="div-main">
     <div class="row">
-	<div class="col-md-12">
-        <ul class="list-group">
-<!--
-Format for adding items to group
+	<div class="col-md-4" id="div-add-friends">
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="input-search-username" placeholder="username">
+                
+            </div>
+
+
+            <button type="button" class="btn btn-primary">Search</button>
+        </form>
+        <ul id="ul-users" class="list-group">
+<!--Format for adding items to group
           <li class="list-group-item">First item</li>
           <li class="list-group-item list-group-item-danger">Fourth item</li>
 -->
-        </ul>
 
+            <!--user has ability to go through and select different friends-->
+            {% for user in users %}
+            <a href="#" class="list-group-item" id="anchor-user" onclick="selectFriend()">{{ user.username }}<span id="check" class="glyphicon glyphicon-ok"></span></a>
+            {% endfor %}
+        </ul>
+        <button type="button" class="btn btn-primary">Add Friend</button> 
 	</div>
     <div class="col-md-12">
 
