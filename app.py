@@ -31,10 +31,11 @@ def index():
 @app.route('/login', methods = ['POST'])
 def login():
     """User calls this in index.html to login to app"""
+
     uID = getAuth(request.form['username'])
     password = request.form['password']
 
-    else:
+    if uID is None:
         redirect('/')
 #User is added to database if they aren't already in the database
     if db.users is None or db.users.find({"uID":uID, "password":password}) is None:
