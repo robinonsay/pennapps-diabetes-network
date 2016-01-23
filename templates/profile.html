@@ -51,10 +51,10 @@
 
     }
 </style>
-    
+
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#check').hide();                
+        $('#check').hide();
     });
 var isFriendSelected = false;
 function selectFriend(){
@@ -65,8 +65,8 @@ function selectFriend(){
          $('#check').hide();
         isFriendSelected = false;
     }
-       
-}    
+
+}
 </script>
 </head>
 <body>
@@ -100,7 +100,7 @@ function selectFriend(){
 
 
 		<ul class="nav navbar-nav navbar-right">
-      <li><a href="/home" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
+      <li><a href="/home/{{ username }}" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
 			<li  class="active"><a href="#" id="anchor-usersName">{{ username }}</a></li>
       <li><a href="/" id="anchor-logout">LogOut</a></li>
 
@@ -147,7 +147,7 @@ function selectFriend(){
         <form>
             <div class="form-group">
                 <input type="text" class="form-control" id="input-search-username" placeholder="username">
-                
+
             </div>
 
 
@@ -164,7 +164,7 @@ function selectFriend(){
             <a href="#" class="list-group-item" id="anchor-user" onclick="selectFriend()">{{ user.username }}<span id="check" class="glyphicon glyphicon-ok"></span></a>
             {% endfor %}
         </ul>
-        <button type="button" class="btn btn-primary">Add Friend</button> 
+        <button type="button" class="btn btn-primary">Add Friend</button>
 	</div>
     <div class="col-md-12">
 
