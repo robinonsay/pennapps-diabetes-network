@@ -9,7 +9,7 @@ def index():
 def home():
     return render_template('home.html')
 
-@app.route('/signup', methods = ['POST'])
+@app.route('/login', methods = ['POST'])
 def login():
     username = request.form['username']
     password = request.form['password']
