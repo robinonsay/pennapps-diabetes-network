@@ -12,7 +12,8 @@ def getUsername(auth):
     elif auth == "mGRZ93y7jIGU51BDbKIsNTpVLHEU":
         username = "mGRZ93y7jIGU51BDbKIsNTpVLHEU"
         return "patient5"
-    return None
+    else:
+        return None
 
 def getAuth(username):
     if username == "patient6":
@@ -21,7 +22,8 @@ def getAuth(username):
         return "7amAbchQQeGWUKY4sc7AmsEMVBNA"
     elif username == "patient5":
         return "mGRZ93y7jIGU51BDbKIsNTpVLHEU"
-    return None
+    else:
+        return None
 
 @app.route('/')
 def index():
@@ -31,10 +33,8 @@ def index():
 @app.route('/login', methods = ['POST'])
 def login():
     """User calls this in index.html to login to app"""
-
     uID = getAuth(request.form['username'])
     # password = request.form['password']
-
     if uID is None:
         redirect('/')
 #User is added to database if they aren't already in the database
@@ -67,7 +67,7 @@ def profile(uID):
     for user in results:
         users.append(getUsername(user.uID))
 
-    return render_template('profile.html', username=getUsername(uID), users=users)
+    return render_template('profile.html', username=getUsername(uID), users=users, uID=uId)
 
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
