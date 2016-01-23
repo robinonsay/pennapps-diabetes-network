@@ -45,8 +45,8 @@ def update():
     updatedResults = db.users.update_one({"username":username},
     {
         "$set":{
-            "weight":request.form['weight']
-            "birthdate":request.form['birthdate']
+            "weight":request.form['weight'],
+            "birthdate":request.form['birthdate'],
             "health-conditions":request.form['health-conditions']
         }
     })
