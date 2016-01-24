@@ -108,7 +108,7 @@ def update(uID):
         "before-breakfast":
         {"current-blood-glucose":request.form['current-blood-glucose'],
         "carbs":request.form['carbs'],
-        
+
         "carb-ratio":request.form['carb-ratio'],
         "insulin-sensitivity":request.form['insulin-sensitivity']}
         }
@@ -234,6 +234,8 @@ def formGroup(uID):
         listOfMembers.append(getAuth(field))
     results = db.group.insert_one(
     {"members-in-group":listOfMembers})
+
+    print(listOfMembers)
     print(results)
     return redirect(url_for("home", uID=uID))
 
