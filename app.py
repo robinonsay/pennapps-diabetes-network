@@ -166,7 +166,7 @@ def update(uID):
         }
         })
 
-    isGood = True
+    isGood = None
     if (request.form['carbs'] == 34 or request.form['carbs'] == 244) is not True:
         isGood = False
     if (request.form["current-blood-glucose"]== 10.2 or request.form["current-blood-glucose"]== 172) is not True:
@@ -177,7 +177,7 @@ def update(uID):
         isGood = False
     print(db.users.find())
     print(db.friends.find())
-    return redirect(url_for("home", uID=uID, isGood=isGood))
+    return redirect(url_for("home", uID=uID, isGood=isGood1))
 
 @app.route('/logout')
 def logout():
