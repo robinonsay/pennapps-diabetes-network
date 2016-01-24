@@ -185,7 +185,7 @@ def addFriend(username):
 
 @app.route('/formGroup/<uID>', methods = ['POST'])
 def formGroup(uID):
-
+    print("In formGroup")
     for field in request.form:
         print(request.form[field])
     return redirect(url_for("home", uID=uID))
