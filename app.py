@@ -61,7 +61,8 @@ def home(uID):
     if uID is None:
         return redirect('/')
 #list of friends is passed to poopulate the bet thing
-    rawFriends = dumps(db.friends.find({"uID":uID}))
+    # rawFriends = dumps(db.friends.find({"uID":uID}))
+    rawFriends = dumps(db.users.find())
     friends = json.loads(rawFriends)
     return render_template('home.html', uID=uID, friends=friends, username = getUsername(uID))
 
