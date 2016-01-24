@@ -47,7 +47,7 @@ def login():
     for user in users:
         isInDB = user["uID"] == uID
 
-    if isInDB:
+    if isInDB is not True:
         results = db.users.insert_one({"uID":uID, "username":username})
 #User is added to database if they aren't already in the database
     # if db.users is None or db.users.find({"uID":uID, "password":password}) is None:
