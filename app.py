@@ -72,14 +72,90 @@ def profile(uID):
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
     """Called to update data for a user"""
-    updatedResults = db.users.update_one({"uID":uID},
-    {
-        "$set":{
-            "weight":request.form['weight'],
-            "birthdate":request.form['birthdate'],
-            "health-conditions":request.form['health-conditions']
-        }
-    })
+    if request.form['time-of-day'] == 0:
+        updatedResults =  db.users.update_one({"uID":uID},
+        {
+            "$set":{
+                "before-breakfast":{
+                    "current-blood-glucose":request.form['current-blood-glucose'],
+                    "carbs":request.form['carbs'],
+                    "target-blood-glucose":request.form['target-blood-glucose'],
+                    "carb-ratio":request.form['carb-ratio'],
+                    "insulin-sensitivity":request.form['insulin-sensitivity']
+
+                }
+            }
+        })
+    elif request.form['time-of-day'] == 1:
+        updatedResults =  db.users.update_one({"uID":uID},
+        {
+            "$set":{
+                "after-breakfast":{
+                    "current-blood-glucose":request.form['current-blood-glucose'],
+                    "carbs":request.form['carbs'],
+                    "target-blood-glucose":request.form['target-blood-glucose'],
+                    "carb-ratio":request.form['carb-ratio'],
+                    "insulin-sensitivity":request.form['insulin-sensitivity']
+
+                }
+            }
+        })
+    elif request.form['time-of-day'] == 2:
+        updatedResults =  db.users.update_one({"uID":uID},
+        {
+            "$set":{
+                "before-lunch":{
+                    "current-blood-glucose":request.form['current-blood-glucose'],
+                    "carbs":request.form['carbs'],
+                    "target-blood-glucose":request.form['target-blood-glucose'],
+                    "carb-ratio":request.form['carb-ratio'],
+                    "insulin-sensitivity":request.form['insulin-sensitivity']
+
+                }
+            }
+        })
+    elif request.form['time-of-day'] == 3:
+        updatedResults =  db.users.update_one({"uID":uID},
+        {
+            "$set":{
+                "after-lunch":{
+                    "current-blood-glucose":request.form['current-blood-glucose'],
+                    "carbs":request.form['carbs'],
+                    "target-blood-glucose":request.form['target-blood-glucose'],
+                    "carb-ratio":request.form['carb-ratio'],
+                    "insulin-sensitivity":request.form['insulin-sensitivity']
+
+                }
+            }
+        })
+    elif request.form['time-of-day'] == 4:
+        updatedResults =  db.users.update_one({"uID":uID},
+        {
+            "$set":{
+                "before-dinner":{
+                    "current-blood-glucose":request.form['current-blood-glucose'],
+                    "carbs":request.form['carbs'],
+                    "target-blood-glucose":request.form['target-blood-glucose'],
+                    "carb-ratio":request.form['carb-ratio'],
+                    "insulin-sensitivity":request.form['insulin-sensitivity']
+
+                }
+            }
+        })
+    elif request.form['time-of-day'] == 5:
+        updatedResults =  db.users.update_one({"uID":uID},
+        {
+            "$set":{
+                "after-dinner":{
+                    "current-blood-glucose":request.form['current-blood-glucose'],
+                    "carbs":request.form['carbs'],
+                    "target-blood-glucose":request.form['target-blood-glucose'],
+                    "carb-ratio":request.form['carb-ratio'],
+                    "insulin-sensitivity":request.form['insulin-sensitivity']
+
+                }
+            }
+        })
     return redirect(url_for("home", uID=uID))
 
 @app.route('/logout')
