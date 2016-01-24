@@ -65,10 +65,10 @@ def profile(uID):
     results = db.users.find()
     print(results)
     users = []
-    # for user in results:
-    #     users.append(getUsername(user["uID"]))
+    for user in results:
+        print(user)
 
-    return render_template('profile.html', username=getUsername(uID), users=users, uID=uID)
+    return render_template('profile.html', username=getUsername(uID), users=none, uID=uID)
 
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
@@ -77,7 +77,8 @@ def update(uID):
     if request.form['time-of-day'] == "0":
         print("working with tod 0")
         updatedResults =  db.users.insert(
-        {"uID":uID})
+        {"uID":uID,"before-breakfast":"test"
+        })
         #     "before-breakfast":{
         #         "current-blood-glucose":request.form['current-blood-glucose'],
         #         "carbs":request.form['carbs'],
