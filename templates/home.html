@@ -49,10 +49,13 @@
 </style>
 
 <script type="text/javascript">
+    function selectUserForGroup(username){
+      $('#'+username).attr("style","background-color: #727272;");
+      $('#ul-friend').append('<input value="'+username+'" hidden="true">');
+    }
+
     $(document).ready(function(){
-        $('.li-friend').click(function(){
-            
-        }).attr("style","background-color:#727272;");
+
     });
 </script>
 </head>
@@ -132,11 +135,11 @@
               <li class="list-group-item">First item</li>
               <li class="list-group-item list-group-item-danger">Fourth item</li>
     -->
-                
+
                 <!--user has ability to go through and select different friends-->
                 {% for friend in friends %}
-                <li class="list-group-item li-friend" >{{ friend["username"] }}</li>
-                <input name="" value="" hidden="true">
+                <li class="list-group-item li-friend" id = "{{ friend['username'] }}" onclick="selectUserForGroup({{friend['username']}})">{{ friend["username"] }}</li>
+
                 {% endfor %}
             </ul>
             <button type="submit" class="btn btn-info">Form Group</button>
