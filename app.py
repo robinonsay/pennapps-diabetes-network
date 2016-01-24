@@ -80,7 +80,8 @@ def update(uID):
         {"uID":uID,
         "before-breakfast":
         {"current-blood-glucose":request.form['current-blood-glucose'],
-        "carbs":request.form['carbs']}})
+        "carbs":request.form['carbs'],
+        "target-blood-glucose":request.form['target-blood-glucose']}})
         #     "before-breakfast":{
         #         "current-blood-glucose":request.form['current-blood-glucose'],
         #         "carbs":request.form['carbs'],
