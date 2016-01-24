@@ -1,3 +1,20 @@
+<!--
+Carbs 34
+CBG 10.2
+Target 6
+Cratio 12
+ISF 1.2
+-->
+
+<!--
+Carbs 244
+CBG 172
+ISF 1.6
+Cratio 15 -->
+
+<!--
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +66,11 @@
 </style>
 
 <script type="text/javascript">
+    function selectUserForGroup(username){
+      $('#'+username).attr("style","background-color: #727272;");
+      $('#ul-friends').append('<input name="'+username+'" value="'+username+'" hidden="true">');
+    }
+
     $(document).ready(function(){
 
     });
@@ -105,7 +127,7 @@
 </nav>
 
 
-<div class="container-fluid" id="div-alerts" hidden>
+<div class="container-fluid" id="div-alerts">
     <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 <!--Format for alerts
@@ -115,7 +137,19 @@
             <strong>Warning</strong>This is an alert
         </div>
 -->
-
+      {% if isGood %}
+      <div class="alert alert-danger text-center">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+      </button>
+          <img src="../static/thumbs-up.svg" style="transform: rotate(180deg)" width="75em">
+      </div>
+      {% else %}
+      <div class="alert alert-info text-center">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+      </button>
+          <img src="../static/thumbs-up.svg" width="75em">
+      </div>
+      {% endif %}
 	</div>
 </div>
 
@@ -124,18 +158,21 @@
 <div class="container-fluid" id="div-main">
     <div class="row">
 	<div class="col-md-6">
-        <ul id="ul-friends" class="list-group">
-<!--Format for adding items to group
-          <li class="list-group-item">First item</li>
-          <li class="list-group-item list-group-item-danger">Fourth item</li>
--->
+        <form action="/formGroup/{{uID}}" method="POST" role="form">
+            <ul id="ul-friends" class="list-group">
+    <!--Format for adding items to group
+              <li class="list-group-item">First item</li>
+              <li class="list-group-item list-group-item-danger">Fourth item</li>
+    -->
 
-            <!--user has ability to go through and select different friends-->
-            {% for friend in friends %}
-            <li class="list-group-item">{{ friend["username"] }}</li>
-            {% endfor %}
-        </ul>
-        <button type="button" class="btn btn-info">Form Group</button>
+                <!--user has ability to go through and select different friends-->
+                {% for friend in friends %}
+                <li class="list-group-item li-friend" id = "{{ friend['username'] }}" onclick="selectUserForGroup('{{friend['username']}}')">{{ friend["username"] }}</li>
+                {% endfor %}
+                <li><button type="submit" class="btn btn-info">Form Group</button></li>
+            </ul>
+
+        </form>
 	</div>
     <div class="col-md-6" id="div-messages">
 
@@ -388,6 +425,9 @@
 
         </div>
 	</div>
+  <div class="col-md-6">
+
+  </div>
 </div>
 
 </div>
