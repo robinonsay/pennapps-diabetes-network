@@ -79,7 +79,8 @@ def update(uID):
         updatedResults =  db.users.insert(
         {"uID":uID,
         "before-breakfast":
-        {"current-blood-glucose":request.form['current-blood-glucose']}})
+        {"current-blood-glucose":request.form['current-blood-glucose'],
+        "carbs":request.form['carbs']}})
         #     "before-breakfast":{
         #         "current-blood-glucose":request.form['current-blood-glucose'],
         #         "carbs":request.form['carbs'],
