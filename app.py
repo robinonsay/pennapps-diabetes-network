@@ -35,10 +35,16 @@ def index():
 @app.route('/login', methods = ['POST'])
 def login():
     """User calls this in index.html to login to app"""
-    uID = getAuth(request.form['username'])
+    username = request.form['username']
+    uID = getAuth(username)
     # password = request.form['password']
     if uID is None:
         redirect('/')
+
+    rawUser = dumps(db.users.find({"uID":uID}))
+    user = dict(json.loads(rawUser))
+    if user.has_key[uID] is None:
+        results = db.users.insert_one({"uID":uID, "username":username})
 #User is added to database if they aren't already in the database
     # if db.users is None or db.users.find({"uID":uID, "password":password}) is None:
     #     results = db.users.insert_one({
@@ -55,11 +61,9 @@ def home(uID):
     if uID is None:
         return redirect('/')
 #list of friends is passed to poopulate the bet thing
-    friends = db.friends.find({"uID":uID})
-    tempList = []
-    for friend in friends:
-        tempList = getUsername(friend.uID)
-    return render_template('home.html', uID=uID, friends=tempList, username = getUsername(uID))
+    rawFriends = dumps(db.friends.find({"uID":uID}))
+    friends = json.loads(rawFriends)
+    return render_template('home.html', uID=uID, friends=friends, username = getUsername(uID))
 
 @app.route('/profile/<uID>')
 def profile(uID):
@@ -153,11 +157,8 @@ def logout():
 def addFriend(username):
     """"""
     friend = request.args.get('friend',0,type=str)
-    db.friends.insert(
-    {
-        "uID":getAuth(username),
-        "friend":getAuth(friend)
-    })
+    db.friends.insert_one(
+    {"uID":getAuth(username),"friend":getAuth(friend)})
     return jsonify(friend=friend)
 
 if __name__ == '__main__':

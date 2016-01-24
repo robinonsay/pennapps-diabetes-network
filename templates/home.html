@@ -132,7 +132,7 @@
 
             <!--user has ability to go through and select different friends-->
             {% for friend in friends %}
-            <li class="list-group-item">{{ friend }}</li>
+            <li class="list-group-item">{{ friend["username"] }}</li>
             {% endfor %}
         </ul>
         <button type="button" class="btn btn-info">Form Group</button>

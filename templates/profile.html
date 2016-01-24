@@ -139,7 +139,7 @@
 
             <!--user has ability to go through and select different friends-->
             {% for user in users %}
-            <a href="#" class="list-group-item friending" id="anchor-{{user["uID"]}}"><span id="span-friend">{{ user["uID"] }}</span><span id="span-ok" class="glyphicon glyphicon-ok"></span></a>
+            <a href="#" class="list-group-item friending" id="anchor-{{user["uID"]}}"><span id="span-friend">{{ user["username"] }}</span><span id="span-ok" class="glyphicon glyphicon-ok"></span></a>
             {% endfor %}
         </ul>
 
