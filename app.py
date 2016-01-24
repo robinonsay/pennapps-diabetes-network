@@ -45,7 +45,7 @@ def login():
     users = dict(json.loads(rawUser))
     isInDB = False
     for user in users:
-        isInDB = user["uID"] == uID:
+        isInDB = user["uID"] == uID
 
     if isInDB:
         results = db.users.insert_one({"uID":uID, "username":username})
