@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 
 app = Flask(__name__)
-client = MongoClient()
+client = MongoClient(host="173.255.234.84")
 db = client.primer
 def getUsername(auth):
     if auth == "8cMySVclQw1xvhhhUm0tEIbAeVek":
