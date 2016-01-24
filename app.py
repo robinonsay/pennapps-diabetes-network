@@ -188,7 +188,7 @@ def good(uID):
     return render_template('good.html', uID=uID, username = getUsername(uID))
 
 @app.route('/bad/<uID>')
-def good(uID):
+def bad(uID):
     return render_template('bad.html', uID=uID, username = getUsername(uID))
 
 @app.route('/logout')
