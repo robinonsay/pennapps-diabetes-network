@@ -97,7 +97,7 @@ def update(uID):
             }
         })
     elif request.form['time-of-day'] == 2:
-        updatedResults =  db.users.update_one(insert_one(
+        updatedResults =  db.users.insert_one(
         {"uID":uID,
             "before-lunch":{
                 "current-blood-glucose":request.form['current-blood-glucose'],
