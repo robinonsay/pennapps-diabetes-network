@@ -51,7 +51,7 @@
 <script type="text/javascript">
     function selectUserForGroup(username){
       $('#'+username).attr("style","background-color: #727272;");
-      $('#ul-friends').append('<input value="'+username+'" hidden="true">');
+      $('#ul-friends').append('<input name="'+username+'" value="'+username+'" hidden="true">');
     }
 
     $(document).ready(function(){
