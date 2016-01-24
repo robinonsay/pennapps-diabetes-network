@@ -185,10 +185,12 @@ def addFriend(username):
 
 @app.route('/formGroup/<uID>', methods = ['POST'])
 def formGroup(uID):
-    print("In formGroup")
-    print(request.form)
+    tableForGroup = {}
     for field in request.form:
         print(field)
+        tableForGroup[uID] = field
+    results = db.group.insert_one({{"members-in-group":tableForGroup}})
+    print(results)
     return redirect(url_for("home", uID=uID))
 
 
