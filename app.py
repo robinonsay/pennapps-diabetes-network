@@ -84,6 +84,8 @@ def update(uID):
 
             }
         })
+
+        print(updatedResults)
     elif request.form['time-of-day'] == 1:
         updatedResults =  db.users.insert(
         {"uID":uID,
