@@ -1,12 +1,5 @@
 import csv
 import json
-<<<<<<< HEAD
-with open('file.csv', 'rb') as f:
-     reader = csv.reader(f)
-     your_list=list(reader)
-
-print your_list
-=======
 import time
 with open('TTC.UK.ALLBOLUS_READINGS_LOG.csv', "rb") as f:
      reader = csv.reader(f)
@@ -37,7 +30,6 @@ for i in xrange(0,totalCSVFood):
 with open("output.csv", "wb") as f:
     writer = csv.writer(f)
     writer.writerows(totalFoodCSV)
->>>>>>> f6b3320a9b2973ff7dd08fd0028c25b0effef889
 
 
 
