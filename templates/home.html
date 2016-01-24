@@ -137,17 +137,18 @@ Cratio 15 -->
             <strong>Warning</strong>This is an alert
         </div>
 -->
-      {{isGood}}
+
       <div class="alert alert-danger text-center">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
       </button>
-          <img src="../static/thumbs-up.svg" style="transform: rotate(180deg)" width="75em">
+          <img src="../static/thumbs-up.svg" style="transform: rotate(180deg)" width="75em">{{isGood}}
       </div>
 
       <div class="alert alert-info text-center">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
       </button>
           <img src="../static/thumbs-up.svg" width="75em">
+          {{isGood}}
       </div>
 
 	</div>
