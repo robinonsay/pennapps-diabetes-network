@@ -1,3 +1,4 @@
+import json
 from bson.json_util import dumps
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
@@ -64,13 +65,12 @@ def home(uID):
 def profile(uID):
     """Users profile, they can add friends here"""
     cursor = db.users.find()
-    json = dumps(cursor)
-    print(json)
-    users = []
-    for user in results:
-        print(user)
+    users = dumps(cursor)
+    parsedUsers = json.loads(users)
+    print(users)
 
-    return render_template('profile.html', username=getUsername(uID), users=none, uID=uID)
+
+    return render_template('profile.html', username=getUsername(uID), users=parsedUsers, uID=uID)
 
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
