@@ -73,7 +73,7 @@ def profile(uID):
 def update(uID):
     """Called to update data for a user"""
     if request.form['time-of-day'] == 0:
-        updatedResults =  db.users.insert_one(
+        updatedResults =  db.users.insert(
         {"uID":uID,
             "before-breakfast":{
                 "current-blood-glucose":request.form['current-blood-glucose'],
@@ -85,7 +85,7 @@ def update(uID):
             }
         })
     elif request.form['time-of-day'] == 1:
-        updatedResults =  db.users.insert_one(
+        updatedResults =  db.users.insert(
         {"uID":uID,
             "after-breakfast":{
                 "current-blood-glucose":request.form['current-blood-glucose'],
@@ -97,7 +97,7 @@ def update(uID):
             }
         })
     elif request.form['time-of-day'] == 2:
-        updatedResults =  db.users.insert_one(
+        updatedResults =  db.users.insert(
         {"uID":uID,
             "before-lunch":{
                 "current-blood-glucose":request.form['current-blood-glucose'],
@@ -109,7 +109,7 @@ def update(uID):
             }
         })
     elif request.form['time-of-day'] == 3:
-        updatedResults =  db.users.insert_one(
+        updatedResults =  db.users.insert(
         {"uID":uID,
             "after-lunch":{
                 "current-blood-glucose":request.form['current-blood-glucose'],
@@ -121,7 +121,7 @@ def update(uID):
             }
         })
     elif request.form['time-of-day'] == 4:
-        updatedResults =  db.users.insert_one(
+        updatedResults =  db.users.insert(
         {"uID":uID,
             "before-dinner":{
                 "current-blood-glucose":request.form['current-blood-glucose'],
@@ -133,7 +133,7 @@ def update(uID):
             }
         })
     elif request.form['time-of-day'] == 5:
-        updatedResults =  db.users.insert_one(
+        updatedResults =  db.users.insert(
         {"uID":uID,
             "after-dinner":{
                 "current-blood-glucose":request.form['current-blood-glucose'],
@@ -157,7 +157,7 @@ def logout():
 def addFriend(username):
     """"""
     friend = request.args.get('friend',0,type=str)
-    db.friends.insert_one(
+    db.friends.insert(
     {
         "uID":getAuth(username),
         "friend":getAuth(friend)
