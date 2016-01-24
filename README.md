@@ -1,4 +1,4 @@
-# Diabetes Newtork!
+# Diabetes Network!
 
     -u_ID
         -username
