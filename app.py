@@ -183,9 +183,11 @@ def addFriend(username):
     {"uID":getAuth(username),"friend":getAuth(friend)})
     return jsonify(friend=friend)
 
-# @app.route('/formGroup/<uID>', methods = ['POST'])
-# def formGroup(uID):
-# pass
+@app.route('/formGroup/<uID>', methods = ['POST'])
+def formGroup(uID):
+    for field in form:
+        print(field.data)
+    return redirect(url_for("home", uID=uID))
 
 
 if __name__ == '__main__':
