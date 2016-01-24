@@ -138,7 +138,7 @@
 
                 <!--user has ability to go through and select different friends-->
                 {% for friend in friends %}
-                <li class="list-group-item li-friend" id = "{{ friend['username'] }}" onclick="selectUserForGroup({{friend['username']}})">{{ friend["username"] }}</li>
+                <li class="list-group-item li-friend" id = "{{ friend['username'] }}" onclick="selectUserForGroup('{{friend['username']}}')">{{ friend["username"] }}</li>
 
                 {% endfor %}
             </ul>
