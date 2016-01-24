@@ -185,11 +185,11 @@ def addFriend(username):
 
 @app.route('/formGroup/<uID>', methods = ['POST'])
 def formGroup(uID):
+    listOfMembers = []
+    for field in request.form
+        listOfMembers.append(getAuth(field))
     results = db.group.insert_one(
-    {"members-in-group":{
-    for field in request.form:
-        getAuth(field):field 
-    }})
+    {"members-in-group":listOfMembers})
     print(results)
     return redirect(url_for("home", uID=uID))
 
