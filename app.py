@@ -63,6 +63,7 @@ def home(uID):
 def profile(uID):
     """Users profile, they can add friends here"""
     results = db.users.find()
+    print(results)
     users = []
     for user in results:
         users.append(getUsername(user["uID"]))
