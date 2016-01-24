@@ -1,0 +1,156 @@
+<!--
+Carbs 34
+CBG 10.2
+Target 6
+Cratio 12
+ISF 1.2
+-->
+
+<!--
+Carbs 244
+CBG 172
+ISF 1.6
+Cratio 15 -->
+
+<!--
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diabetes Network</title>
+
+    <!-- Bootstrap CSS -->
+<link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn t work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<!--jQuery CDN-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<style>
+    body{
+        background-color: #0097A7;
+        color: #FFFFFF;
+    }
+    .jumbotron{
+        background-color: #00BCD4;
+    }
+
+    button,.btn{
+        background-color: #FFC107;
+        border: none;
+        color: #727272;
+    }
+    main{
+        color: #212121;
+    }
+    style-4 input[type="text"] {
+      padding: 10px;
+      border: none;
+      border-bottom: solid 2px #c9c9c9;
+      transition: border 0.3s;
+    }
+    .style-4 input[type="text"]:focus,
+    .style-4 input[type="text"].focus {
+      border-bottom: solid 2px #969696;
+
+    }
+</style>
+
+<script type="text/javascript">
+    function selectUserForGroup(username){
+      $('#'+username).attr("style","background-color: #727272;");
+      $('#ul-friends').append('<input name="'+username+'" value="'+username+'" hidden="true">');
+    }
+
+    $(document).ready(function(){
+
+    });
+</script>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand"><img id="img-logo" class="img-circle" src="https://github.com/robinonsay/pennapps-diabetes-network/blob/master/static/pennapps-diabetes-logo.png?raw=true" alt="Logo" style="height: 2em;"></a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse navbar-ex1-collapse">
+<!--TODO
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Link</a></li>
+			<li><a href="#">Link</a></li>
+		</ul>
+
+		<form class="navbar-form navbar-left" role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+-->
+
+
+		<ul class="nav navbar-nav navbar-right">
+      <li class="active"><a href="#" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
+			<li><a href="/profile/{{ uID }}" id="anchor-usersName">{{ username }}</a></li>
+      <li><a href="/" id="anchor-logout">LogOut</a></li>
+
+<!--TODO
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li><a href="#">Separated link</a></li>
+				</ul>
+			</li>
+-->
+		</ul>
+	</div><!-- /.navbar-collapse -->
+</nav>
+
+
+<div class="container-fluid" id="div-alerts">
+    <div class="row">
+	<div class="col-md-6 col-md-offset-3">
+<!--Format for alerts
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+        </button>
+            <strong>Warning</strong>This is an alert
+        </div>
+-->
+
+      <div class="alert alert-danger text-center">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+      </button>
+          <img src="../static/thumbs-up.svg" style="transform: rotate(180deg)" width="75em">
+      </div>
+
+	</div>
+</div>
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
