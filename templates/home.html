@@ -49,11 +49,9 @@
 </style>
 
 <script type="text/javascript">
-    var i = 0*1;
-    function addCondition(){
-        $("#div-condition-formgroup").append('<input type="text" class="form-control" name="health-conditions-'+i+'">');
-        i++;
-    }
+    $(document).ready(function(){
+
+    });
 </script>
 </head>
 <body>
@@ -87,8 +85,8 @@
 
 
 		<ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="/home" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
-			<li><a href="/profile/" id="anchor-usersName">{{ username }}</a></li>
+      <li class="active"><a href="#" id="anchor-home"><span class="glyphicon glyphicon-home"></span></a> </li>
+			<li><a href="/profile/{{ uID }}" id="anchor-usersName">{{ username }}</a></li>
       <li><a href="/" id="anchor-logout">LogOut</a></li>
 
 <!--TODO
@@ -134,32 +132,260 @@
 
             <!--user has ability to go through and select different friends-->
             {% for friend in friends %}
-            <li class="list-group-item">{{ friend.username }}</li>
+            <li class="list-group-item">{{ friend["username"] }}</li>
             {% endfor %}
         </ul>
         <button type="button" class="btn btn-info">Form Group</button>
 	</div>
     <div class="col-md-6" id="div-messages">
-        <div class="well">
-            <form action="/update/{{ username }}" method="POST" role="form">
-                <legend>Update Info</legend>
 
-                <div class="form-group">
-                    <label for="weight">Weight</label>
-                    <input type="number" class="form-control" id="input=weight" name="weight" placeholder="lbs">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a  data-toggle="collapse" href="#div-before-breakfast">Before Breakfast</a>
+                    </h4>
                 </div>
+                <div id="div-before-breakfast" class="panel-collapse collapse">
+                    <form action="/update/{{ uID }}" method="POST" role="form"><input name="time-of-day" hidden="true" value="0">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="current-blood-glucose">Current Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
 
-                <div class="form-group">
-                    <label for="birthdate">Birthdate</label>
-                    <input type="date" class="form-control" id="input-birthdate" name="birthdate" >
+                            <div class="form-group">
+                                <label for="carbs">Carbs</label>
+                                <input type="number" class="form-control" name="carbs" placeholder="g" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="target-blood-glucose">Target Blood Glucose</label>
+                                <input type="number" class="form-control" name="target-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carb-ratio">Carbonhydrate-ratio</label>
+                                <input type="number" class="form-control" name="carb-ratio" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="insulin-sensitivity">Insulin-sensitivty-factor</label>
+                                <input type="number" class="form-control" name="insulin-sensitivity" placeholder="mmol/L/U">
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <div id="div-condition-formgroup">
-                    <label for="health-conditions">Other Health Condtions</label>
-                    <input type="text" class="form-control" id="input-health-condtions" name="health-conditions">
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a  data-toggle="collapse"  href="#div-after-breakfast">After Breakfast</a>
+                    </h4>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+                <div id="div-after-breakfast" class="panel-collapse collapse">
+                    <form action="/update/{{ uID }}" method="POST" role="form"><input name="time-of-day" hidden="true" value="1">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="current-blood-glucose">Current Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carbs">Carbs</label>
+                                <input type="number" class="form-control" name="carbs" placeholder="g" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="target-blood-glucose">Target Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carb-ratio">Carbonhydrate-ratio</label>
+                                <input type="number" class="form-control" name="carb-ratio" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="insulin-sensitivity">Insulin-sensitivty-factor</label>
+                                <input type="number" class="form-control" name="insulin-sensitivity" placeholder="mmol/L/U">
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a  data-toggle="collapse"  href="#div-before-lunch">Before Lunch</a>
+                    </h4>
+                </div>
+                <div id="div-before-lunch" class="panel-collapse collapse">
+                    <form action="/update/{{ uID }}" method="POST" role="form"><input name="time-of-day" hidden="true" value="2">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="current-blood-glucose">Current Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carbs">Carbs</label>
+                                <input type="number" class="form-control" name="carbs" placeholder="g" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="target-blood-glucose">Target Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carb-ratio">Carbonhydrate-ratio</label>
+                                <input type="number" class="form-control" name="carb-ratio" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="insulin-sensitivity">Insulin-sensitivty-factor</label>
+                                <input type="number" class="form-control" name="insulin-sensitivity" placeholder="mmol/L/U">
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a  data-toggle="collapse"  href="#div-after-lunch">After Lunch</a>
+                    </h4>
+                </div>
+                <div id="div-after-lunch" class="panel-collapse collapse">
+                    <form action="/update/{{ uID }}" method="POST" role="form"><input name="time-of-day" hidden="true" value="3">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="current-blood-glucose">Current Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carbs">Carbs</label>
+                                <input type="number" class="form-control" name="carbs" placeholder="g" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="target-blood-glucose">Target Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carb-ratio">Carbonhydrate-ratio</label>
+                                <input type="number" class="form-control" name="carb-ratio" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="insulin-sensitivity">Insulin-sensitivty-factor</label>
+                                <input type="number" class="form-control" name="insulin-sensitivity" placeholder="mmol/L/U">
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a  data-toggle="collapse"  href="#div-before-dinner">Before Dinner</a>
+                    </h4>
+                </div>
+                <div id="div-before-dinner" class="panel-collapse collapse">
+                    <form action="/update/{{ uID }}" method="POST" role="form"><input name="time-of-day" hidden="true" value="4">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="current-blood-glucose">Current Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carbs">Carbs</label>
+                                <input type="number" class="form-control" name="carbs" placeholder="g" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="target-blood-glucose">Target Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carb-ratio">Carbonhydrate-ratio</label>
+                                <input type="number" class="form-control" name="carb-ratio" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="insulin-sensitivity">Insulin-sensitivty-factor</label>
+                                <input type="number" class="form-control" name="insulin-sensitivity" placeholder="mmol/L/U">
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a   data-toggle="collapse" href="#div-after-dinner">After Dinner</a>
+                    </h4>
+                </div>
+                <div id="div-after-dinner" class="panel-collapse collapse">
+                    <form action="/update/{{ uID }}" method="POST" role="form"><input name="time-of-day" hidden="true" value="5">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="current-blood-glucose">Current Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carbs">Carbs</label>
+                                <input type="number" class="form-control" name="carbs" placeholder="g" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="target-blood-glucose">Target Blood Glucose</label>
+                                <input type="number" class="form-control" name="current-blood-glucose" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="carb-ratio">Carbonhydrate-ratio</label>
+                                <input type="number" class="form-control" name="carb-ratio" placeholder="mmol/L">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="insulin-sensitivity">Insulin-sensitivty-factor</label>
+                                <input type="number" class="form-control" name="insulin-sensitivity" placeholder="mmol/L/U">
+                            </div>
+
+                        </div>
+
+                        <div class="panel-footer"><button type="submit" class="btn btn-primary">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+
         </div>
 	</div>
 </div>
