@@ -50,7 +50,9 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-
+        $('.li-friend').click(function(){
+            
+        }).attr("style","background-color:#727272;");
     });
 </script>
 </head>
@@ -133,8 +135,8 @@
                 
                 <!--user has ability to go through and select different friends-->
                 {% for friend in friends %}
-                <li class="list-group-item">{{ friend["username"] }}</li>
-                <input name="" value="friend['uID']" hidden="true">
+                <li class="list-group-item li-friend" >{{ friend["username"] }}</li>
+                <input name="" value="" hidden="true">
                 {% endfor %}
             </ul>
             <button type="submit" class="btn btn-info">Form Group</button>
