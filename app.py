@@ -77,8 +77,7 @@ def update(uID):
     if request.form['time-of-day'] == "0":
         print("working with tod 0")
         updatedResults =  db.users.insert(
-        {"uID":uID,"before-breakfast":{"test":"fgfgfg"}
-        })
+        {"uID":uID,"before-breakfast":{"current-blood-glucose":request.form['current-blood-glucose'],"carbs":request.form['carbs'],"target-blood-glucose":request.form['target-blood-glucose'],"carb-ratio":request.form['carb-ratio'],"insulin-sensitivity":request.form['insulin-sensitivity']})
         #     "before-breakfast":{
         #         "current-blood-glucose":request.form['current-blood-glucose'],
         #         "carbs":request.form['carbs'],
