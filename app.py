@@ -72,7 +72,9 @@ def profile(uID):
 @app.route('/update/<uID>', methods = ['POST'])
 def update(uID):
     """Called to update data for a user"""
+    print("beginning update")
     if request.form['time-of-day'] == 0:
+        print("working with tod 0")
         updatedResults =  db.users.insert(
         {"uID":uID,
             "before-breakfast":{
@@ -85,7 +87,9 @@ def update(uID):
             }
         })
 
+        print("ur pre")
         print(updatedResults)
+        print("ur post")
     elif request.form['time-of-day'] == 1:
         updatedResults =  db.users.insert(
         {"uID":uID,
