@@ -177,7 +177,7 @@ def update(uID):
         isGood = False
     print(db.users.find())
     print(db.friends.find())
-    return redirect(url_for("home", uID=uID, isGood=isGood1))
+    return redirect(url_for("home", uID=uID, isGood=isGood))
 
 @app.route('/logout')
 def logout():
