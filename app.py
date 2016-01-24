@@ -76,7 +76,7 @@ def update(uID):
     print("beginning update")
     if request.form['time-of-day'] == "0":
         print("working with tod 0")
-        updatedResults =  db.users.insert(
+        updatedResults =  db.users.insert_one(
         {"uID":uID,
         "before-breakfast":
         {"current-blood-glucose":request.form['current-blood-glucose'],
