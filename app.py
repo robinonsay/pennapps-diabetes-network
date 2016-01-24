@@ -1,3 +1,4 @@
+from bson.json_util import dumps
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 
@@ -62,8 +63,9 @@ def home(uID):
 @app.route('/profile/<uID>')
 def profile(uID):
     """Users profile, they can add friends here"""
-    results = db.users.find()
-    print(results)
+    cursor = db.users.find()
+    json = dumps(cursor)
+    print(json)
     users = []
     for user in results:
         print(user)
@@ -84,14 +86,6 @@ def update(uID):
         "target-blood-glucose":request.form['target-blood-glucose'],
         "carb-ratio":request.form['carb-ratio'],
         "insulin-sensitivity":request.form['insulin-sensitivity']}})
-        #     "before-breakfast":{
-        #         "current-blood-glucose":request.form['current-blood-glucose'],
-        #         "carbs":request.form['carbs'],
-        #         "target-blood-glucose":request.form['target-blood-glucose'],
-        #         "carb-ratio":request.form['carb-ratio'],
-        #         "insulin-sensitivity":request.form['insulin-sensitivity']
-        #
-        #     })
 
         print("ur pre")
         print(updatedResults)
@@ -99,63 +93,53 @@ def update(uID):
     elif request.form['time-of-day'] == 1:
         updatedResults =  db.users.insert(
         {"uID":uID,
-            "after-breakfast":{
-                "current-blood-glucose":request.form['current-blood-glucose'],
-                "carbs":request.form['carbs'],
-                "target-blood-glucose":request.form['target-blood-glucose'],
-                "carb-ratio":request.form['carb-ratio'],
-                "insulin-sensitivity":request.form['insulin-sensitivity']
+        "after-breakfast":
+        {"current-blood-glucose":request.form['current-blood-glucose'],
+        "carbs":request.form['carbs'],
+        "target-blood-glucose":request.form['target-blood-glucose'],
+        "carb-ratio":request.form['carb-ratio'],
+        "insulin-sensitivity":request.form['insulin-sensitivity']}})
 
-            }
-        })
     elif request.form['time-of-day'] == 2:
         updatedResults =  db.users.insert(
         {"uID":uID,
-            "before-lunch":{
-                "current-blood-glucose":request.form['current-blood-glucose'],
-                "carbs":request.form['carbs'],
-                "target-blood-glucose":request.form['target-blood-glucose'],
-                "carb-ratio":request.form['carb-ratio'],
-                "insulin-sensitivity":request.form['insulin-sensitivity']
+        "before-lunch":
+        {"current-blood-glucose":request.form['current-blood-glucose'],
+        "carbs":request.form['carbs'],
+        "target-blood-glucose":request.form['target-blood-glucose'],
+        "carb-ratio":request.form['carb-ratio'],
+        "insulin-sensitivity":request.form['insulin-sensitivity']}})
 
-            }
-        })
     elif request.form['time-of-day'] == 3:
         updatedResults =  db.users.insert(
         {"uID":uID,
-            "after-lunch":{
-                "current-blood-glucose":request.form['current-blood-glucose'],
-                "carbs":request.form['carbs'],
-                "target-blood-glucose":request.form['target-blood-glucose'],
-                "carb-ratio":request.form['carb-ratio'],
-                "insulin-sensitivity":request.form['insulin-sensitivity']
+            "after-lunch":
+            {"current-blood-glucose":request.form['current-blood-glucose'],
+            "carbs":request.form['carbs'],
+            "target-blood-glucose":request.form['target-blood-glucose'],
+            "carb-ratio":request.form['carb-ratio'],
+            "insulin-sensitivity":request.form['insulin-sensitivity']}})
 
-            }
-        })
     elif request.form['time-of-day'] == 4:
         updatedResults =  db.users.insert(
         {"uID":uID,
-            "before-dinner":{
-                "current-blood-glucose":request.form['current-blood-glucose'],
-                "carbs":request.form['carbs'],
-                "target-blood-glucose":request.form['target-blood-glucose'],
-                "carb-ratio":request.form['carb-ratio'],
-                "insulin-sensitivity":request.form['insulin-sensitivity']
+            "before-dinner":
+            {"current-blood-glucose":request.form['current-blood-glucose'],
+            "carbs":request.form['carbs'],
+            "target-blood-glucose":request.form['target-blood-glucose'],
+            "carb-ratio":request.form['carb-ratio'],
+            "insulin-sensitivity":request.form['insulin-sensitivity']}})
 
-            }
-        })
     elif request.form['time-of-day'] == 5:
         updatedResults =  db.users.insert(
         {"uID":uID,
-            "after-dinner":{
-                "current-blood-glucose":request.form['current-blood-glucose'],
-                "carbs":request.form['carbs'],
-                "target-blood-glucose":request.form['target-blood-glucose'],
-                "carb-ratio":request.form['carb-ratio'],
-                "insulin-sensitivity":request.form['insulin-sensitivity']
+            "after-dinner":
+            {"current-blood-glucose":request.form['current-blood-glucose'],
+            "carbs":request.form['carbs'],
+            "target-blood-glucose":request.form['target-blood-glucose'],
+            "carb-ratio":request.form['carb-ratio'],
+            "insulin-sensitivity":request.form['insulin-sensitivity']}})
 
-            }
-        })
     print(db.users.find())
     print(db.friends.find())
     return redirect(url_for("home", uID=uID))
