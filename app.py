@@ -156,6 +156,8 @@ def update(uID):
                 }
             }
         })
+    print(db.users.find())
+    print(db.friends.find())
     return redirect(url_for("home", uID=uID))
 
 @app.route('/logout')
