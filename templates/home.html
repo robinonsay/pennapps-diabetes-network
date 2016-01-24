@@ -139,10 +139,10 @@
                 <!--user has ability to go through and select different friends-->
                 {% for friend in friends %}
                 <li class="list-group-item li-friend" id = "{{ friend['username'] }}" onclick="selectUserForGroup('{{friend['username']}}')">{{ friend["username"] }}</li>
-
                 {% endfor %}
+                <li><button type="submit" class="btn btn-info">Form Group</button></li>
             </ul>
-            <button type="submit" class="btn btn-info">Form Group</button>
+
         </form>
 	</div>
     <div class="col-md-6" id="div-messages">
