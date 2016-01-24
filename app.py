@@ -43,7 +43,7 @@ def login():
 
     rawUser = dumps(db.users.find({"uID":uID}))
     user = dict(json.loads(rawUser))
-    if user.has_key[uID] is None:
+    if user[uID] is None:
         results = db.users.insert_one({"uID":uID, "username":username})
 #User is added to database if they aren't already in the database
     # if db.users is None or db.users.find({"uID":uID, "password":password}) is None:
