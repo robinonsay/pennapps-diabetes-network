@@ -195,7 +195,7 @@ def update(uID):
 
     print(isGood)
 
-    if (request.form["insulin-sensitivity"]== "3.0 "or request.form["insulin-sensitivity"]== "1.6" or request.form["insulin-sensitivity"]== "1.5") is False:
+    if (request.form["insulin-sensitivity"]== "3.0"or request.form["insulin-sensitivity"]== "1.6" or request.form["insulin-sensitivity"]== "1.5") is False:
         isGood = False
 
     print(db.users.find())
