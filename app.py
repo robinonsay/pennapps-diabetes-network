@@ -73,7 +73,7 @@ def profile(uID):
 def update(uID):
     """Called to update data for a user"""
     print("beginning update")
-    if request.form['time-of-day'] == 0:
+    if request.form['time-of-day'] == "0":
         print("working with tod 0")
         updatedResults =  db.users.insert(
         {"uID":uID,
