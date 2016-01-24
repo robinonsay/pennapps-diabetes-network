@@ -42,7 +42,7 @@ def login():
         redirect('/')
 
     rawUser = dumps(db.users.find({"uID":uID}))
-    users = dict(json.loads(rawUser))
+    users = json.loads(rawUser)
     isInDB = False
     for user in users:
         isInDB = user["uID"] == uID
