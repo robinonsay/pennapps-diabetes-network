@@ -103,55 +103,69 @@ def update(uID):
         print(updatedResults)
         print("ur post")
     elif request.form['time-of-day'] == 1:
-        updatedResults =  db.users.insert(
-        {"uID":uID,
-        "after-breakfast":
+        updatedResults =  db.users.update_one(
+        {"uID":uID},
+        {"$set": {
+        "before-breakfast":
         {"current-blood-glucose":request.form['current-blood-glucose'],
         "carbs":request.form['carbs'],
         "target-blood-glucose":request.form['target-blood-glucose'],
         "carb-ratio":request.form['carb-ratio'],
-        "insulin-sensitivity":request.form['insulin-sensitivity']}})
+        "insulin-sensitivity":request.form['insulin-sensitivity']}
+        }
+        })
 
     elif request.form['time-of-day'] == 2:
-        updatedResults =  db.users.insert(
-        {"uID":uID,
-        "before-lunch":
+        updatedResults =  db.users.update_one(
+        {"uID":uID},
+        {"$set": {
+        "before-breakfast":
         {"current-blood-glucose":request.form['current-blood-glucose'],
         "carbs":request.form['carbs'],
         "target-blood-glucose":request.form['target-blood-glucose'],
         "carb-ratio":request.form['carb-ratio'],
-        "insulin-sensitivity":request.form['insulin-sensitivity']}})
+        "insulin-sensitivity":request.form['insulin-sensitivity']}
+        }
+        })
 
     elif request.form['time-of-day'] == 3:
-        updatedResults =  db.users.insert(
-        {"uID":uID,
-            "after-lunch":
-            {"current-blood-glucose":request.form['current-blood-glucose'],
-            "carbs":request.form['carbs'],
-            "target-blood-glucose":request.form['target-blood-glucose'],
-            "carb-ratio":request.form['carb-ratio'],
-            "insulin-sensitivity":request.form['insulin-sensitivity']}})
+        updatedResults =  db.users.update_one(
+        {"uID":uID},
+        {"$set": {
+        "before-breakfast":
+        {"current-blood-glucose":request.form['current-blood-glucose'],
+        "carbs":request.form['carbs'],
+        "target-blood-glucose":request.form['target-blood-glucose'],
+        "carb-ratio":request.form['carb-ratio'],
+        "insulin-sensitivity":request.form['insulin-sensitivity']}
+        }
+        })
 
     elif request.form['time-of-day'] == 4:
-        updatedResults =  db.users.insert(
-        {"uID":uID,
-            "before-dinner":
-            {"current-blood-glucose":request.form['current-blood-glucose'],
-            "carbs":request.form['carbs'],
-            "target-blood-glucose":request.form['target-blood-glucose'],
-            "carb-ratio":request.form['carb-ratio'],
-            "insulin-sensitivity":request.form['insulin-sensitivity']}})
+        updatedResults =  db.users.update_one(
+        {"uID":uID},
+        {"$set": {
+        "before-breakfast":
+        {"current-blood-glucose":request.form['current-blood-glucose'],
+        "carbs":request.form['carbs'],
+        "target-blood-glucose":request.form['target-blood-glucose'],
+        "carb-ratio":request.form['carb-ratio'],
+        "insulin-sensitivity":request.form['insulin-sensitivity']}
+        }
+        })
 
     elif request.form['time-of-day'] == 5:
-        updatedResults =  db.users.insert(
-        {"uID":uID,
-            "after-dinner":
-            {"current-blood-glucose":request.form['current-blood-glucose'],
-            "carbs":request.form['carbs'],
-            "target-blood-glucose":request.form['target-blood-glucose'],
-            "carb-ratio":request.form['carb-ratio'],
-            "insulin-sensitivity":request.form['insulin-sensitivity']}})
-
+        updatedResults =  db.users.update_one(
+        {"uID":uID},
+        {"$set": {
+        "before-breakfast":
+        {"current-blood-glucose":request.form['current-blood-glucose'],
+        "carbs":request.form['carbs'],
+        "target-blood-glucose":request.form['target-blood-glucose'],
+        "carb-ratio":request.form['carb-ratio'],
+        "insulin-sensitivity":request.form['insulin-sensitivity']}
+        }
+        })
     print(db.users.find())
     print(db.friends.find())
     return redirect(url_for("home", uID=uID))
@@ -168,6 +182,10 @@ def addFriend(username):
     db.friends.insert_one(
     {"uID":getAuth(username),"friend":getAuth(friend)})
     return jsonify(friend=friend)
+
+@app.route('/formGroup/<uID>', methods = ['POST'])
+def formGroup(uID):
+
 
 if __name__ == '__main__':
     app.debug = True

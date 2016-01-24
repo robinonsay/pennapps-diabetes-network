@@ -124,18 +124,21 @@
 <div class="container-fluid" id="div-main">
     <div class="row">
 	<div class="col-md-6">
-        <ul id="ul-friends" class="list-group">
-<!--Format for adding items to group
-          <li class="list-group-item">First item</li>
-          <li class="list-group-item list-group-item-danger">Fourth item</li>
--->
-
-            <!--user has ability to go through and select different friends-->
-            {% for friend in friends %}
-            <li class="list-group-item">{{ friend["username"] }}</li>
-            {% endfor %}
-        </ul>
-        <button type="button" class="btn btn-info">Form Group</button>
+        <form action="" method="POST" role="form">
+            <ul id="ul-friends" class="list-group">
+    <!--Format for adding items to group
+              <li class="list-group-item">First item</li>
+              <li class="list-group-item list-group-item-danger">Fourth item</li>
+    -->
+                
+                <!--user has ability to go through and select different friends-->
+                {% for friend in friends %}
+                <li class="list-group-item">{{ friend["username"] }}</li>
+                <input name="" value="friend['uID']" hidden="true">
+                {% endfor %}
+            </ul>
+            <button type="submit" class="btn btn-info">Form Group</button>
+        </form>
 	</div>
     <div class="col-md-6" id="div-messages">
 
