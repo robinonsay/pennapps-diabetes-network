@@ -65,7 +65,7 @@ def profile(uID):
     results = db.users.find()
     users = []
     for user in results:
-        users.append(getUsername(user.uID))
+        users.append(getUsername(user["uID"]))
 
     return render_template('profile.html', username=getUsername(uID), users=users, uID=uID)
 
