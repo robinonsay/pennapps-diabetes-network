@@ -1,3 +1,20 @@
+<!--
+Carbs 34
+CBG 10.2
+Target 6
+Cratio 12
+ISF 1.2
+-->
+
+<!--
+Carbs 244
+CBG 172
+ISF 1.6
+Cratio 15 -->
+
+<!--
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +127,7 @@
 </nav>
 
 
-<div class="container-fluid" id="div-alerts" hidden>
+<div class="container-fluid" id="div-alerts">
     <div class="row">
 	<div class="col-md-6 col-md-offset-3">
 <!--Format for alerts
@@ -120,7 +137,19 @@
             <strong>Warning</strong>This is an alert
         </div>
 -->
-
+      {% if isGood %}
+      <div class="alert alert-danger text-center">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+      </button>
+          <img src="../static/thumbs-up.svg" style="transform: rotate(180deg)" width="75em">
+      </div>
+      {% else %}
+      <div class="alert alert-info text-center">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+      </button>
+          <img src="../static/thumbs-up.svg" width="75em">
+      </div>
+      {% endif %}
 	</div>
 </div>
 
@@ -396,6 +425,9 @@
 
         </div>
 	</div>
+  <div class="col-md-6">
+
+  </div>
 </div>
 
 </div>

@@ -161,14 +161,23 @@ def update(uID):
         "before-breakfast":
         {"current-blood-glucose":request.form['current-blood-glucose'],
         "carbs":request.form['carbs'],
-        "target-blood-glucose":request.form['target-blood-glucose'],
         "carb-ratio":request.form['carb-ratio'],
         "insulin-sensitivity":request.form['insulin-sensitivity']}
         }
         })
+
+    isGood = True
+    if (request.form['carbs'] == 34 or request.form['carbs'] == 244) is not True:
+        isGood = False
+    if (request.form["current-blood-glucose"]== 10.2 or request.form["current-blood-glucose"]== 172) is not True:
+        isGood = False
+    if (request.form["carb-ratio"]== 15 or request.form["carb-ratio"]== 12) is not True:
+        isGood = False
+    if (request.form["insulin-sensitivity"]== 1.2 or request.form["insulin-sensitivity"]== 1.6) is not True:
+        isGood = False
     print(db.users.find())
     print(db.friends.find())
-    return redirect(url_for("home", uID=uID))
+    return redirect(url_for("home", uID=uID, isGood=isGood))
 
 @app.route('/logout')
 def logout():
