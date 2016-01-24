@@ -57,7 +57,7 @@ def home(uID):
     tempList = []
     for friend in friends:
         tempList = getUsername(friend.uID)
-    return render_template('home.html', uID=uID, friends=tempList)
+    return render_template('home.html', uID=uID, friends=tempList, username = getUsername(uID))
 
 @app.route('/profile/<uID>')
 def profile(uID):
