@@ -183,12 +183,22 @@ def update(uID):
     isGood = True
     if (request.form['carbs'] == 244 or request.form['carbs'] == 300 or request.form['carbs'] == 200) is False:
         isGood = False
+
+    print(isGood)
+
     if (request.form["current-blood-glucose"]== 102 or request.form["current-blood-glucose"]== 172 or request.form["current-blood-glucose"]== 200 or request.form["current-blood-glucose"]== 140 or request.form["current-blood-glucose"]== 150) is False:
         isGood = False
+
+    print(isGood)
+
     if (request.form["carb-ratio"]== 15 or request.form["carb-ratio"]== 12 or request.form["carb-ratio"]== 1.5 or request.form["carb-ratio"]== 19) is False:
         isGood = False
+
+    print(isGood)
+
     if (request.form["insulin-sensitivity"]== 1.2 or request.form["insulin-sensitivity"]== 1.6 or request.form["insulin-sensitivity"]== 1.5) is False:
         isGood = False
+
     print(db.users.find())
     print(db.friends.find())
     print(isGood)
