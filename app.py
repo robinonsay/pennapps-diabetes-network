@@ -185,7 +185,7 @@ def addFriend(username):
 
 @app.route('/formGroup/<uID>', methods = ['POST'])
 def formGroup(uID):
-    
+
 
 
 if __name__ == '__main__':
